@@ -69,3 +69,5 @@ while True:
 	move()
 	draw()
 	time.sleep(0.001)
+
+	vbbgbgbgbg
