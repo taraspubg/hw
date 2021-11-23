@@ -28,7 +28,25 @@ def move():
 					bullets.remove(b)
 					if brick['val'] == 0:
 						bricks.remove(brick)
+def draw():
+	#result = ''
+	for y in range(height):
+		result = ''
+		for x in range(width):
+			current_char = ' '
+			for bullet in bullets:
+				if x == bullet['x'] and y == round(bullet['y']):
+					current_char = '*'
+			if x == ship['x'] and y == height - 1:
+				current_char = 'T'
+			for item in bricks:
+  				if y == 0 and x == item['x']:
+  					current_char = str(item['val'])
+			result += current_char
+
+		print(result)
 while True:
 	os.system('cls')
 	move()
+	draw()
 	time.sleep(0.001)
