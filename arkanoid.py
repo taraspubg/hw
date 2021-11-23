@@ -45,6 +45,25 @@ def draw():
 			result += current_char
 
 		print(result)
+def press_instruction(key):
+	global ship
+	if key == pynput.keyboard.KeyCode.from_char('d'):
+		ship['x'] += 1
+	if ship['x'] <= 0:
+		ship['x'] = 0
+	if key == pynput.keyboard.KeyCode.from_char('a'):
+		ship['x'] -= 1
+	if ship['x'] >= 20:
+		ship['x'] = 19
+	if key == pynput.keyboard.Key.space:
+		bullets.append({'x': ship['x'], 'y': height - 1})
+def release_instruction(key):
+  print('release', key)
+
+pynput.keyboard.Listener(
+  on_press=press_instruction,
+  on_release=release_instruction
+).start()
 while True:
 	os.system('cls')
 	move()
